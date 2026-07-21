@@ -235,6 +235,24 @@
       "name": "企业数据信用评估流",
       "file": "workflows/data-credit-assessment.yaml",
       "agents": ["DAM-10", "DAM-11", "DAM-04"]
+    },
+    {
+      "id": "cross-border-data-compliance",
+      "name": "跨境数据流通合规流",
+      "file": "workflows/cross-border-data-compliance.yaml",
+      "agents": ["DAM-04", "DAT-02", "DAT-01", "DAT-03"]
+    },
+    {
+      "id": "data-asset-strategy-planning",
+      "name": "数据资产战略规划流",
+      "file": "workflows/data-asset-strategy-planning.yaml",
+      "agents": ["DAM-01", "DAM-02", "DAM-05", "DAM-06"]
+    },
+    {
+      "id": "data-sharing-open",
+      "name": "数据共享开放流",
+      "file": "workflows/data-sharing-open.yaml",
+      "agents": ["DAM-05", "DAM-04", "DAM-06", "DAT-03"]
     }
   ]
 }

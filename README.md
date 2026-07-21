@@ -169,10 +169,8 @@ agentic-data-element/
 ## 🛣️ 路线图（Roadmap）
 
 - [x] v0.1 — 17 个标准岗位数字员工首发
-- [ ] v0.2 — 预置 6 个跨岗位工作流（数据资产入表、数据产品挂牌、跨境合规等）
-- [ ] v0.3 — 提供 MCP Server / Dify / FastGPT / Coze 平台一键部署包
-- [ ] v0.4 — 集成能力评价自动化打分（对齐附录 B 权重）
-- [ ] v0.5 — 支持"数字员工组织架构图"可视化与虚拟组织编排
+- [x] v0.2 — 预置 6 个跨岗位工作流（数据资产入表、数据产品挂牌、跨境合规等）
+- [x] v0.3 — 平台适配转换脚本（Cursor Rules / Claude Code / OpenClaw / Dify / FastGPT / Coze）
 
 ---
 
