@@ -19,8 +19,8 @@ data-element-skills/
 │   ├── lib/common.sh                # 公共函数
 │   └── validate.sh                  # 校验入口
 ├── docs/                            # 文档
-├── install.sh                       # 一键安装到 Claude/Cursor/Copilot/Aider
-├── convert.sh                       # 生成 dist/{claude,cursor,copilot,aider}
+├── install.sh                       # 一键安装到 Claude/Cursor/Copilot/Aider/OpenClaw
+├── convert.sh                       # 生成 dist/{claude,cursor,copilot,aider,openclaw}
 ├── workflow.sh                      # 打印工作流作业单
 └── roster.json                      # 机器可读的角色元数据
 ```
@@ -104,10 +104,12 @@ $EDITOR roster.json
 ./install.sh cursor       # → .cursor/rules/ (转换为 .mdc)
 ./install.sh copilot      # → .github/prompts/
 ./install.sh aider        # → .aider/agents/ + .aider.conf.yml
+./install.sh openclaw     # → .openclaw/workspaces/ + .openclaw/config.json5
 ./install.sh all
 
-# 用户级全局安装（Claude/Cursor 支持）
+# 用户级全局安装（Claude/Cursor/OpenClaw 支持）
 ./install.sh claude --global
+./install.sh openclaw --global   # → ~/.openclaw/workspaces-data-element/ + ~/.openclaw/config.data-element.json5
 ```
 
 ## 5. 多目标格式转换
@@ -118,6 +120,18 @@ $EDITOR roster.json
 | Cursor | `.cursor/rules/` | `<id>-<name>.mdc` | 头部改写为 Cursor 规则头 |
 | GitHub Copilot | `.github/prompts/` | `<id>-<name>.prompt.md` | 遵循 prompt 命名 |
 | Aider | `.aider/agents/` | `<id>-<name>.md` | 配套生成 `.aider.conf.yml` |
+| OpenClaw | `.openclaw/workspaces/<id>/` | `AGENTS.md` / `IDENTITY.md` / `BOOTSTRAP.md` / `TOOLS.md` | 配套生成可合并的 `config.json5` |
+
+### 5.1 OpenClaw 细节
+
+OpenClaw 采用 **一个 agent 一个 workspace 目录** 的模型，会将其中的 bootstrap Markdown 注入系统提示。生成内容：
+
+- `AGENTS.md`：直接使用角色 md 全文，作为行为准则主体。
+- `IDENTITY.md`：从 front-matter 提取的身份卡（`emoji` / `name` / `direction` / `color` / `vibe`）。
+- `BOOTSTRAP.md`：会话启动检查表，确保输出末尾保留 `§5.X.X` 标准溯源。
+- `TOOLS.md`：工具占位，默认不预置高危工具。
+
+项目内安装会产出 `.openclaw/config.json5`，其 `agents.list[].workspace` 已固化为绝对路径，可直接将条目合入 `~/.openclaw/config.json5`。参考 [OpenClaw 官方文档](https://docs.openclaw.ai/gateway/config-agents)。
 
 ## 6. 工作流开发
 

@@ -13,6 +13,9 @@
 .qoder/
 .cursor/
 .claude/
+.openclaw/
+.aider/
+.aider.conf.yml
 
 # Build & 生成物
 build/
