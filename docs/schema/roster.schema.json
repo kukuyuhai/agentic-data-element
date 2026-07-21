@@ -1,0 +1,240 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/data-element-agents/data-element-skills/blob/main/docs/schema/roster.schema.json",
+  "title": "data-element-agents · Roster Schema",
+  "description": "机器可读的岗位数字员工花名册元数据规范，对齐 T/MIITEC 025-2024《数据要素产业人才岗位能力要求》。",
+  "type": "object",
+  "required": [
+    "standard",
+    "standard_title",
+    "issued_by",
+    "issued_at",
+    "version",
+    "capability_dimensions",
+    "levels",
+    "directions"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "指向本 JSON Schema 文件的相对/绝对路径。"
+    },
+    "standard": {
+      "type": "string",
+      "const": "T/MIITEC 025-2024",
+      "description": "对齐的标准编号。"
+    },
+    "standard_title": {
+      "type": "string",
+      "description": "标准全称。",
+      "minLength": 1
+    },
+    "issued_by": {
+      "type": "string",
+      "description": "标准发布单位。",
+      "minLength": 1
+    },
+    "issued_at": {
+      "type": "string",
+      "format": "date",
+      "description": "标准发布日期（YYYY-MM-DD）。"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "description": "本花名册版本号，语义化版本。"
+    },
+    "capability_dimensions": {
+      "type": "array",
+      "description": "三维能力模型定义。",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "sub"],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "enum": ["knowledge", "skill", "practice"]
+          },
+          "name": {
+            "type": "string",
+            "description": "维度中文名。"
+          },
+          "sub": {
+            "type": "array",
+            "description": "子维度列表。",
+            "items": { "type": "string" },
+            "minItems": 1
+          }
+        }
+      }
+    },
+    "levels": {
+      "type": "array",
+      "description": "能力等级及其三维加权权重定义。",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": {
+        "type": "object",
+        "required": ["id", "cn", "range", "weights"],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "enum": ["junior", "mid", "senior"]
+          },
+          "cn": {
+            "type": "string",
+            "enum": ["初级", "中级", "高级"]
+          },
+          "range": {
+            "type": "string",
+            "pattern": "^\\d+-\\d+$",
+            "description": "等级区间，如 1-3 / 4-6 / 7-9。"
+          },
+          "weights": {
+            "type": "object",
+            "required": ["knowledge", "skill", "practice"],
+            "additionalProperties": false,
+            "properties": {
+              "knowledge": { "type": "number", "minimum": 0, "maximum": 1 },
+              "skill":     { "type": "number", "minimum": 0, "maximum": 1 },
+              "practice":  { "type": "number", "minimum": 0, "maximum": 1 }
+            },
+            "description": "三维权重，加和应约等于 1.0。"
+          }
+        }
+      }
+    },
+    "directions": {
+      "type": "array",
+      "description": "岗位方向及旗下数字员工列表。",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "agents"],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "enum": ["data-asset-management", "data-asset-trading"]
+          },
+          "name": {
+            "type": "string",
+            "enum": ["数据资产管理", "数据资产交易"]
+          },
+          "agents": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "$ref": "#/$defs/agent" }
+          }
+        }
+      }
+    },
+    "workflows": {
+      "type": "array",
+      "description": "跨岗位标准工作流索引；具体步骤放在 workflows/*.yaml。",
+      "items": { "$ref": "#/$defs/workflow" }
+    }
+  },
+  "$defs": {
+    "agent": {
+      "type": "object",
+      "description": "单个数字员工（岗位）元数据。",
+      "required": [
+        "id",
+        "name",
+        "en_name",
+        "file",
+        "standard_section",
+        "emoji",
+        "color",
+        "keywords",
+        "responsibilities"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^(DAM|DAT)-\\d{2}$",
+          "description": "唯一编号。DAM-XX（管理方向）/ DAT-XX（交易方向）。"
+        },
+        "name": {
+          "type": "string",
+          "description": "岗位中文名（与标准原文一致）。"
+        },
+        "en_name": {
+          "type": "string",
+          "description": "岗位英文名。"
+        },
+        "abbr": {
+          "type": "string",
+          "description": "常用缩写，如 CDO。"
+        },
+        "file": {
+          "type": "string",
+          "pattern": "^agents/(data-asset-management|data-asset-trading)/[0-9]{2}-[a-z0-9-]+\\.md$",
+          "description": "角色 Markdown 文件相对路径。"
+        },
+        "standard_section": {
+          "type": "string",
+          "pattern": "^5\\.[12]\\.\\d+$",
+          "description": "对齐的标准章节号，形如 5.1.7 / 5.2.3。"
+        },
+        "emoji": {
+          "type": "string",
+          "description": "头像 emoji。"
+        },
+        "color": {
+          "type": "string",
+          "description": "UI 颜色语义（自由文本，如 navy/teal/red 等）。"
+        },
+        "keywords": {
+          "type": "array",
+          "description": "关键词标签。",
+          "items": { "type": "string" },
+          "minItems": 1
+        },
+        "responsibilities": {
+          "type": "string",
+          "description": "岗位职责一句话摘要。",
+          "minLength": 1
+        }
+      }
+    },
+    "workflow": {
+      "type": "object",
+      "description": "跨岗位工作流条目。",
+      "required": ["id", "name", "file", "agents"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9-]*$",
+          "description": "工作流标识，kebab-case。"
+        },
+        "name": {
+          "type": "string",
+          "description": "工作流中文名。"
+        },
+        "file": {
+          "type": "string",
+          "pattern": "^workflows/[a-z0-9-]+\\.yaml$",
+          "description": "工作流 YAML 文件相对路径。"
+        },
+        "agents": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "string",
+            "pattern": "^(DAM|DAT)-\\d{2}$"
+          },
+          "description": "该工作流按顺序涉及的岗位编号。"
+        }
+      }
+    }
+  }
+}
