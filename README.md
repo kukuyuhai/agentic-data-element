@@ -55,6 +55,24 @@
 
 ---
 
+## 🧩 技能体系（74 个 Skills）
+
+每个数字员工挂载一组可复用的 **Skill**（能力单元），分四层结构：
+
+| 层级 | 数量 | 挂载策略 | 示例 |
+|------|:---:|------|------|
+| **Foundation** 共用底座 | 10 | 全员挂载 | `standard-lookup` `pii-scan` `data-classify` |
+| **Management** 管理方向 | 6 | DAM-* 按需 | `asset-catalog-crud` `lineage-graph` `dcmm-scoring` |
+| **Trading** 交易方向 | 5 | DAT-* 按需 | `cross-border-checker` `deal-lifecycle-tracker` |
+| **Role** 岗位专用 | 51 | 仅本岗 | `three-rights-analyzer` `income-approach-calc` |
+| **Scene** 场景工作流 | 2 | 按场景触发 | `data-asset-capitalization` `data-trading` |
+
+> 单 agent 平均挂载 ~15 个 skill，描述总量 ≤ 5000 char，兼容 OpenClaw / Cursor / Claude Code 等平台限制。
+
+详见 [`docs/skills-catalog.md`](docs/skills-catalog.md) · 挂载映射见 [`skills/mount-map.json`](skills/mount-map.json)。
+
+---
+
 ## 🚀 快速开始
 
 ### 方式一：直接引用（推荐入门）

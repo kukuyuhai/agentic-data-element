@@ -1,6 +1,6 @@
 # Skills 目录（Skills Catalog）
 
-> 数据要素岗位数字员工的**能力单元清单**：72 个 skill，分为「共用底座」「方向共用」「岗位专用」三层。
+> 数据要素岗位数字员工的**能力单元清单**：74 个 skill，分为「共用底座」「方向共用」「岗位专用」「场景工作流」四层。
 > 与角色定义（`agents/*.md`）解耦，可被多个 agent 挂载。
 
 ## 1. 设计原则
@@ -25,13 +25,16 @@ skills/
 │   └── ...
 ├── trading/                  # 5 个 · DAT 方向共用
 │   └── ...
-└── role/                     # 岗位专用 · **目录名用英文 slug**，与 agents/**/*.md 一致
-    ├── chief-data-officer/                    # DAM-01
-    │   ├── data-strategy-canvas/SKILL.md
-    │   └── ...
-    ├── data-asset-registration-specialist/    # DAM-03 ⭐ 确权师
-    │   └── ...
-    └── ...                   # 每个岗位 2~4 个专用 skill
+├── role/                     # 51 个 · 岗位专用 · **目录名用英文 slug**
+│   ├── chief-data-officer/                    # DAM-01
+│   │   ├── data-strategy-canvas/SKILL.md
+│   │   └── ...
+│   ├── data-asset-registration-specialist/    # DAM-03 ⭐ 确权师
+│   │   └── ...
+│   └── ...                   # 每个岗位 2~4 个专用 skill
+└── scene/                    # 2 个 · 场景工作流（跨岗位端到端）
+    ├── data-asset-capitalization/SKILL.md
+    └── data-trading/SKILL.md
 ```
 
 > `mount-map.json` 的 **key 仍为 agent-id**（如 `dam-01`），便于 OpenClaw / 安装器按 id 查找；`value` 中的 skill 全名使用物理路径（如 `role/chief-data-officer/data-strategy-canvas`）。
@@ -297,7 +300,18 @@ allowed-tools: Read Write Bash(python3:*)   # 可选 · 预授权工具（实验
 
 </details>
 
-## 8. 挂载分布校验
+## 8. Scene · 场景工作流（2）
+
+**挂载策略：按场景触发，覆盖完整业务链路**
+
+| # | Name | Emoji | 能力概述 | 涉及岗位 |
+|---|---|---|---|---|
+| 72 | `data-asset-capitalization` | 📊 | 数据资产入表全流程助手（识别盘点→确权合规→成本资本化→会计计量→披露→价值评估） | DAM-03, DAM-07, DAM-08, DAM-09 |
+| 73 | `data-trading` | 💱 | 数据交易全流程助手（可行性诊断→产品化→挂牌→定价撮合→合同签约→交付结算） | DAT-01, DAT-02, DAT-03, DAT-05, DAT-06 |
+
+> Scene 技能与 Role 专用技能互补：Role 技能聚焦单一岗位的原子能力，Scene 技能编排多岗位完成端到端场景。
+
+## 9. 挂载分布校验
 
 | 分组 | 岗位数 | 平均 skill 数（Foundation + 方向 + 专用） | 单 agent 峰值 |
 |---|---:|---:|---:|
@@ -307,13 +321,13 @@ allowed-tools: Read Write Bash(python3:*)   # 可选 · 预授权工具（实验
 
 单 agent 挂载均值 ~15 个 skill × 每 `SKILL.md` 描述控制在 ≤ 300 字 ≈ **≤ 5000 char**，远低于 OpenClaw `maxSkillsPromptChars: 18000` 默认阈值。
 
-## 9. 生成与安装
+## 10. 生成与安装
 
 生成骨架（可幂等重跑）：
 
 ```bash
 ./scripts/gen-skills.sh
-# 产出：skills/**/SKILL.md（72 个）+ skills/manifest.json + skills/mount-map.json
+# 产出：skills/**/SKILL.md（74 个）+ skills/manifest.json + skills/mount-map.json
 ```
 
 安装到 OpenClaw 时会自动为每个 agent 注入 `skills:` 字段：
