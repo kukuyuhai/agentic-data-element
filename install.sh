@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # ==============================================================================
-# data-element-agents · install.sh
+# agentic-data-element · install.sh
 #
 # 将 17 个数据要素岗位数字员工安装到你选择的 AI 编程助手中。
 #
@@ -27,7 +27,7 @@ GLOBAL=0
 
 usage() {
   cat <<EOF
-data-element-agents installer
+agentic-data-element installer
 
 用法：
   $0 [claude|cursor|copilot|aider|openclaw|all] [--global]
@@ -97,7 +97,7 @@ install_aider() {
   # 生成 Aider 配置（若不存在）
   if [[ ! -f ./.aider.conf.yml ]]; then
     cat > ./.aider.conf.yml <<'YML'
-# data-element-agents · Aider 配置（自动生成）
+# agentic-data-element · Aider 配置（自动生成）
 # 使用：aider --model <provider> --read .aider/agents/<id>.md
 read:
   - .aider/agents
@@ -108,6 +108,34 @@ YML
 
 # openclaw 侧 id 归一：小写 kebab
 openclaw_id() { printf "%s" "$1" | tr '[:upper:]' '[:lower:]'; }
+
+# 从 skills/mount-map.json 提取某个 agent 的 skills（JSON 数组内容，不含方括号）
+# 返回形如："foundation/standard-lookup", "role/dam-01/data-strategy-canvas"
+skills_for() {
+  local oid="$1"
+  local mmap="${ROOT}/skills/mount-map.json"
+  [[ -f "$mmap" ]] || { echo ""; return 0; }
+  # 匹配形如：  "dam-01": ["foundation/...", ...]
+  awk -v A="$oid" '
+    $0 ~ ("\"" A "\":") {
+      s=$0
+      sub(/^[[:space:]]*"[^"]+":[[:space:]]*\[/, "", s)
+      sub(/\][[:space:]]*,?[[:space:]]*$/, "", s)
+      print s
+      exit
+    }
+  ' "$mmap"
+}
+
+# 确保 skills/ 已生成；若无，自动跑一次 gen-skills.sh
+ensure_skills() {
+  if [[ ! -f "${ROOT}/skills/mount-map.json" ]]; then
+    if [[ -x "${ROOT}/scripts/gen-skills.sh" ]]; then
+      log "未发现 skills/mount-map.json，自动运行 scripts/gen-skills.sh"
+      "${ROOT}/scripts/gen-skills.sh" >/dev/null
+    fi
+  fi
+}
 
 install_openclaw() {
   local base ws_root cfg
@@ -123,6 +151,7 @@ install_openclaw() {
   log "安装到 OpenClaw：$ws_root"
 
   need awk
+  ensure_skills
   rm -rf "$ws_root"
   mkdir -p "$ws_root"
 
@@ -180,17 +209,22 @@ EOF
   done < <(list_agent_files)
 
   # 2) 生成可合并的 config.json5（已将 workspace 固化为绝对路径）
-  local ws_abs
+  local ws_abs skills_abs
   ws_abs="$(cd "$ws_root" && pwd)"
+  skills_abs="$(cd "${ROOT}/skills" 2>/dev/null && pwd || echo "")"
   mkdir -p "$(dirname "$cfg")"
   {
     cat <<HDR
 // ============================================================================
-// data-element-agents · OpenClaw config（自动生成）
+// agentic-data-element · OpenClaw config（自动生成）
 // 标准：T/MIITEC 025-2024《数据要素产业人才岗位能力要求》
 // 合并方法：将本文件中的 agents.list 条目合入 ~/.openclaw/config.json5
 // ============================================================================
 {
+  skills: {
+    searchPaths: ["${skills_abs}"],
+    limits: { maxSkillsPromptChars: 18000 },
+  },
   agents: {
     defaults: {
       contextInjection: "continuation-skip",
@@ -200,18 +234,20 @@ EOF
     list: [
 HDR
     while IFS= read -r f; do
-      local id name en dir section oid
+      local id name en dir section oid skills_list
       id=$(get_frontmatter "$f" id)
       name=$(get_frontmatter "$f" name)
       en=$(get_frontmatter "$f" en_name)
       dir=$(get_frontmatter "$f" direction)
       section=$(get_frontmatter "$f" standard_section)
       oid=$(openclaw_id "$id")
+      skills_list="$(skills_for "$oid")"
       cat <<EOF
       {
         // ${id} · ${name} (${en}) · §${section} · ${dir}
         id: "${oid}",
         workspace: "${ws_abs}/${oid}",
+        skills: [${skills_list}],
       },
 EOF
     done < <(list_agent_files)

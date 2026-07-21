@@ -1,0 +1,649 @@
+[
+  {
+    "name": "standard-lookup",
+    "scope": "foundation",
+    "path": "skills/foundation/standard-lookup/SKILL.md",
+    "emoji": "📚",
+    "risk": "low",
+    "description": "检索数据要素相关的团体/国家标准原文（T/MIITEC 025-2024、GB/T 40685、DCMM 等），返回带条款号的原文片段与上下文。当用户询问某项能力要求的标准依据、需要引用条款、或校验做法是否达标时使用。"
+  }
+  ,
+  {
+    "name": "regulation-lookup",
+    "scope": "foundation",
+    "path": "skills/foundation/regulation-lookup/SKILL.md",
+    "emoji": "⚖️",
+    "risk": "low",
+    "description": "检索数据相关法规原文（数据二十条、数据安全法、个人信息保护法、财会〔2023〕11 号等），返回带条号的原文片段。当输出涉及合规判断、合同条款、财务处理时使用。"
+  }
+  ,
+  {
+    "name": "citation-attach",
+    "scope": "foundation",
+    "path": "skills/foundation/citation-attach/SKILL.md",
+    "emoji": "🔖",
+    "risk": "low",
+    "description": "在能力性输出的每条结论末尾自动附加标准/法规溯源标注（形如 §5.X.X 或 GB/T XXX §X）。当产出报告、评审意见、方案设计需要可追溯时使用。"
+  }
+  ,
+  {
+    "name": "pii-scan",
+    "scope": "foundation",
+    "path": "skills/foundation/pii-scan/SKILL.md",
+    "emoji": "🔍",
+    "risk": "medium",
+    "description": "识别数据集/字段中的个人信息与敏感数据，按个保法与 GB/T 43697 输出敏感等级建议。当处理来源不明的数据、需要脱敏或分级前使用。"
+  }
+  ,
+  {
+    "name": "data-classify",
+    "scope": "foundation",
+    "path": "skills/foundation/data-classify/SKILL.md",
+    "emoji": "🗂️",
+    "risk": "low",
+    "description": "按 GB/T 43697 输出数据的分级（一般/重要/核心）与分类（个人/公共/法人/衍生），并给出保护建议。当资产入库、跨境评估、共享披露前使用。"
+  }
+  ,
+  {
+    "name": "metadata-extract",
+    "scope": "foundation",
+    "path": "skills/foundation/metadata-extract/SKILL.md",
+    "emoji": "📋",
+    "risk": "low",
+    "description": "从 DDL / OpenAPI / CSV 头 / Parquet 抽取结构化元数据（字段名/类型/约束/示例），符合 GB/T 40685 §6 的最小元数据集。当资产盘点、目录登记、血缘建立时使用。"
+  }
+  ,
+  {
+    "name": "dq-6d-check",
+    "scope": "foundation",
+    "path": "skills/foundation/dq-6d-check/SKILL.md",
+    "emoji": "✅",
+    "risk": "low",
+    "description": "按 GB/T 36344-2018 六性（完整/准确/一致/时效/唯一/合规）对数据集/表做质量画像，输出问题清单与优先级。当资产准入、上线前评审、周期性巡检时使用。"
+  }
+  ,
+  {
+    "name": "sql-safe-explain",
+    "scope": "foundation",
+    "path": "skills/foundation/sql-safe-explain/SKILL.md",
+    "emoji": "🛡️",
+    "risk": "medium",
+    "description": "对 SQL 做静态分析：语法校验、全表扫描告警、注入风险识别、权限过大提示。当需要对模型/报表 SQL 做代码评审时使用。"
+  }
+  ,
+  {
+    "name": "handoff-router",
+    "scope": "foundation",
+    "path": "skills/foundation/handoff-router/SKILL.md",
+    "emoji": "🔀",
+    "risk": "low",
+    "description": "当当前问题跨出本岗位职责边界时，识别应转交的目标岗位并输出转交建议卡（含理由 + 目标 agent id + 上下文摘要）。所有 agent 应默认挂载。"
+  }
+  ,
+  {
+    "name": "deliverable-templater",
+    "scope": "foundation",
+    "path": "skills/foundation/deliverable-templater/SKILL.md",
+    "emoji": "📐",
+    "risk": "low",
+    "description": "从当前 agent 的角色 md \"交付物模板\"段落生成结构化骨架，避免手工重排。当用户请求某个可交付物但未提供模板时使用。"
+  }
+  ,
+  {
+    "name": "asset-catalog-crud",
+    "scope": "management",
+    "path": "skills/management/asset-catalog-crud/SKILL.md",
+    "emoji": "📇",
+    "risk": "low",
+    "description": "数据资产目录的增删改查，对齐 GB/T 40685-2021 的最小元数据集。当新增/下架/变更资产条目、批量导入台账时使用。"
+  }
+  ,
+  {
+    "name": "dcmm-scoring",
+    "scope": "management",
+    "path": "skills/management/dcmm-scoring/SKILL.md",
+    "emoji": "🏅",
+    "risk": "low",
+    "description": "按 GB/T 36073-2018（DCMM）对组织在 8 大能力域上打五级分数（初始/受管理/稳健/量化/优化），并输出提升建议。当做能力评估、体系认证准备时使用。"
+  }
+  ,
+  {
+    "name": "lineage-graph",
+    "scope": "management",
+    "path": "skills/management/lineage-graph/SKILL.md",
+    "emoji": "🌳",
+    "risk": "low",
+    "description": "查询/生成数据血缘图（表 → 表、字段 → 字段），支持影响分析与溯源分析。当质量事件根因定位、资产变更影响评估时使用。"
+  }
+  ,
+  {
+    "name": "data-domain-mapping",
+    "scope": "management",
+    "path": "skills/management/data-domain-mapping/SKILL.md",
+    "emoji": "🗺️",
+    "risk": "low",
+    "description": "建立业务域 ↔ 数据域的双向映射，输出对齐表与冲突项。当组织架构调整、数据资产目录初建时使用。"
+  }
+  ,
+  {
+    "name": "data-product-canvas",
+    "scope": "management",
+    "path": "skills/management/data-product-canvas/SKILL.md",
+    "emoji": "🖼️",
+    "risk": "low",
+    "description": "数据产品画布（业务问题 → 数据组合 → 交付形态 → 定价与SLA），一屏产出。当规划新数据产品、上架前评审时使用。"
+  }
+  ,
+  {
+    "name": "stakeholder-raci",
+    "scope": "management",
+    "path": "skills/management/stakeholder-raci/SKILL.md",
+    "emoji": "👥",
+    "risk": "low",
+    "description": "输出数据角色 RACI 矩阵（Responsible/Accountable/Consulted/Informed），明确权责边界。当治理体系搭建、跨部门协同前使用。"
+  }
+  ,
+  {
+    "name": "listing-quality-scorer",
+    "scope": "trading",
+    "path": "skills/trading/listing-quality-scorer/SKILL.md",
+    "emoji": "🎯",
+    "risk": "low",
+    "description": "挂牌数据产品的质量三维评分：完备性（元数据/样例/文档）、合规性（来源/PII/授权）、可交付性（接口/SLA/售后），输出总分与红旗项。当挂牌准入评审时使用。"
+  }
+  ,
+  {
+    "name": "deal-lifecycle-tracker",
+    "scope": "trading",
+    "path": "skills/trading/deal-lifecycle-tracker/SKILL.md",
+    "emoji": "🔄",
+    "risk": "low",
+    "description": "数据交易 9 步状态机（intake → matching → compliance → trial → pricing → contract → delivery → acceptance → maintenance），驱动流程推进与卡点提醒。经纪与产权类交易通用。"
+  }
+  ,
+  {
+    "name": "kyc-kyb-runner",
+    "scope": "trading",
+    "path": "skills/trading/kyc-kyb-runner/SKILL.md",
+    "emoji": "🪪",
+    "risk": "medium",
+    "description": "执行 KYC（个人）/ KYB（企业）检查清单：主体身份、证照、受益人、制裁名单、经营异常。当买卖双方入场前使用。"
+  }
+  ,
+  {
+    "name": "cross-border-checker",
+    "scope": "trading",
+    "path": "skills/trading/cross-border-checker/SKILL.md",
+    "emoji": "🌐",
+    "risk": "high",
+    "description": "按数据出境安全评估办法与个保法判断数据出境是否触发申报/认证/合同标准。当涉及跨境数据流通、境外 IP 访问时使用。"
+  }
+  ,
+  {
+    "name": "contract-clause-library",
+    "scope": "trading",
+    "path": "skills/trading/contract-clause-library/SKILL.md",
+    "emoji": "📜",
+    "risk": "medium",
+    "description": "三权分置合同关键条款库（持有权/加工使用权/产品经营权 × 转让/许可/入股）。当起草或审核数据类合同时使用。"
+  }
+  ,
+  {
+    "name": "data-strategy-canvas",
+    "scope": "role/chief-data-officer",
+    "path": "skills/role/chief-data-officer/data-strategy-canvas/SKILL.md",
+    "emoji": "🗺️",
+    "risk": "low",
+    "description": "首席数据官视角的数据战略画布：愿景/北极星指标/关键结果/责任矩阵/预算/风险。当年度战略制定、董事会汇报前使用。"
+  }
+  ,
+  {
+    "name": "data-roi-model",
+    "scope": "role/chief-data-officer",
+    "path": "skills/role/chief-data-officer/data-roi-model/SKILL.md",
+    "emoji": "💹",
+    "risk": "low",
+    "description": "数据投入-产出 ROI 模型：投入（人/工具/合规）、产出（收入/降本/风控）、归因（因果 vs 相关）。当申请数据预算、复盘投入产出比时使用。"
+  }
+  ,
+  {
+    "name": "boardroom-brief",
+    "scope": "role/chief-data-officer",
+    "path": "skills/role/chief-data-officer/boardroom-brief/SKILL.md",
+    "emoji": "🎤",
+    "risk": "low",
+    "description": "董事会数据议题简报（≤2 页，含形势/进展/风险/决策项）。当上会汇报前使用。"
+  }
+  ,
+  {
+    "name": "asset-planning-roadmap",
+    "scope": "role/data-asset-planner",
+    "path": "skills/role/data-asset-planner/asset-planning-roadmap/SKILL.md",
+    "emoji": "🛣️",
+    "risk": "low",
+    "description": "3 年数据资产建设路线图：里程碑 / 依赖关系 / 验收指标 / 资源需求。当年度规划、可研立项时使用。"
+  }
+  ,
+  {
+    "name": "capability-gap-analysis",
+    "scope": "role/data-asset-planner",
+    "path": "skills/role/data-asset-planner/capability-gap-analysis/SKILL.md",
+    "emoji": "📊",
+    "risk": "low",
+    "description": "能力差距分析：当前 DCMM 等级 vs 目标等级，输出改进主题 + 优先级 + 投入估算。当规划升级路径时使用。"
+  }
+  ,
+  {
+    "name": "three-rights-analyzer",
+    "scope": "role/data-asset-registration-specialist",
+    "path": "skills/role/data-asset-registration-specialist/three-rights-analyzer/SKILL.md",
+    "emoji": "⚖️",
+    "risk": "high",
+    "description": "三权分置分析器：判定数据资源持有权 / 数据加工使用权 / 数据产品经营权的归属主体、举证要点、剥离方式。参照数据二十条。当确权咨询、合同起草前使用。"
+  }
+  ,
+  {
+    "name": "evidence-chain-builder",
+    "scope": "role/data-asset-registration-specialist",
+    "path": "skills/role/data-asset-registration-specialist/evidence-chain-builder/SKILL.md",
+    "emoji": "🔗",
+    "risk": "high",
+    "description": "构建数据权属证据链：来源合法（合同/授权）+ 加工留痕（血缘/日志）+ 权属声明（登记/合同）。当申请数据资产登记、发生权属争议时使用。"
+  }
+  ,
+  {
+    "name": "registration-cert-drafter",
+    "scope": "role/data-asset-registration-specialist",
+    "path": "skills/role/data-asset-registration-specialist/registration-cert-drafter/SKILL.md",
+    "emoji": "📜",
+    "risk": "medium",
+    "description": "数据资产登记证书草稿（面向地方数据交易所/知识产权中心）：主体/权能/范围/期限/附属证据。当申请登记前使用。"
+  }
+  ,
+  {
+    "name": "de-identification-toolkit",
+    "scope": "role/data-asset-security-compliance",
+    "path": "skills/role/data-asset-security-compliance/de-identification-toolkit/SKILL.md",
+    "emoji": "🎭",
+    "risk": "high",
+    "description": "去标识化工具箱：k-匿名、l-多样性、差分隐私三类方案，含参数建议与效用评估。当发布/共享/交易前使用。"
+  }
+  ,
+  {
+    "name": "security-audit-checklist",
+    "scope": "role/data-asset-security-compliance",
+    "path": "skills/role/data-asset-security-compliance/security-audit-checklist/SKILL.md",
+    "emoji": "🛡️",
+    "risk": "medium",
+    "description": "数据安全审计检查表（分级分类/访问控制/审计日志/加密/备份/应急）。当年度审计、合规检查前使用。"
+  }
+  ,
+  {
+    "name": "incident-response-playbook",
+    "scope": "role/data-asset-security-compliance",
+    "path": "skills/role/data-asset-security-compliance/incident-response-playbook/SKILL.md",
+    "emoji": "🚨",
+    "risk": "high",
+    "description": "数据泄露应急响应剧本：72 小时时间线（识别/遏制/根除/恢复/告知）。当发生疑似泄露时使用。"
+  }
+  ,
+  {
+    "name": "asset-inventory-workbook",
+    "scope": "role/data-asset-operations",
+    "path": "skills/role/data-asset-operations/asset-inventory-workbook/SKILL.md",
+    "emoji": "📓",
+    "risk": "low",
+    "description": "数据资产盘点台账：域/系统/表/字段/责任人/等级/更新频率/血缘。当年度盘点、并购尽调、体系认证前使用。"
+  }
+  ,
+  {
+    "name": "inventory-diff",
+    "scope": "role/data-asset-operations",
+    "path": "skills/role/data-asset-operations/inventory-diff/SKILL.md",
+    "emoji": "🔀",
+    "risk": "low",
+    "description": "前后期盘点差异对比：新增/下线/变更/口径迁移，附影响面。当月度/季度对账时使用。"
+  }
+  ,
+  {
+    "name": "data-sharing-workflow",
+    "scope": "role/data-asset-operations",
+    "path": "skills/role/data-asset-operations/data-sharing-workflow/SKILL.md",
+    "emoji": "🤝",
+    "risk": "medium",
+    "description": "内部数据共享工作流：申请 → 审批 → 发布 → 日志 → 审计。含分级授权与脱敏策略模板。当接入新消费方、新建共享渠道时使用。"
+  }
+  ,
+  {
+    "name": "data-product-plan",
+    "scope": "role/data-asset-operations-planner",
+    "path": "skills/role/data-asset-operations-planner/data-product-plan/SKILL.md",
+    "emoji": "🖼️",
+    "risk": "low",
+    "description": "数据产品季度/年度规划：商业目标 → 产品矩阵 → 路线图 → 运营投入 → KPI。当数据产品组合运营规划时使用。"
+  }
+  ,
+  {
+    "name": "pricing-tier-designer",
+    "scope": "role/data-asset-operations-planner",
+    "path": "skills/role/data-asset-operations-planner/pricing-tier-designer/SKILL.md",
+    "emoji": "💰",
+    "risk": "low",
+    "description": "数据产品定价分层设计（订阅/按次/包月/阶梯），含毛利测算。当新品定价、老品调价时使用。"
+  }
+  ,
+  {
+    "name": "api-marketplace-config",
+    "scope": "role/data-asset-operations-planner",
+    "path": "skills/role/data-asset-operations-planner/api-marketplace-config/SKILL.md",
+    "emoji": "🏪",
+    "risk": "low",
+    "description": "API 集市上架配置：路径/参数/示例/限流/SLA/示例代码。当新数据产品上架、变更版本时使用。"
+  }
+  ,
+  {
+    "name": "income-approach-calc",
+    "scope": "role/data-asset-appraiser",
+    "path": "skills/role/data-asset-appraiser/income-approach-calc/SKILL.md",
+    "emoji": "💵",
+    "risk": "high",
+    "description": "数据资产收益法（DCF）估值计算：现金流预测、折现率选取、敏感性分析。参照 GB/T 42129-2022 §7.2。当估值报告需要收益法结论时使用。"
+  }
+  ,
+  {
+    "name": "cost-approach-calc",
+    "scope": "role/data-asset-appraiser",
+    "path": "skills/role/data-asset-appraiser/cost-approach-calc/SKILL.md",
+    "emoji": "🧮",
+    "risk": "medium",
+    "description": "数据资产成本法估值：历史成本 + 重置成本 + 贬值调整。当资产新建、缺乏可比市场数据时使用。"
+  }
+  ,
+  {
+    "name": "market-approach-lookup",
+    "scope": "role/data-asset-appraiser",
+    "path": "skills/role/data-asset-appraiser/market-approach-lookup/SKILL.md",
+    "emoji": "📊",
+    "risk": "medium",
+    "description": "市场法可比交易检索：从公开交易记录/交易所披露中匹配同类资产成交案例。当需要交叉验证估值结论时使用。"
+  }
+  ,
+  {
+    "name": "valuation-report-drafter",
+    "scope": "role/data-asset-appraiser",
+    "path": "skills/role/data-asset-appraiser/valuation-report-drafter/SKILL.md",
+    "emoji": "📄",
+    "risk": "medium",
+    "description": "生成《数据资产评估报告》草稿：适用性说明 + 三法结果 + 敏感性 + 结论区间。当项目交付估值报告时使用。"
+  }
+  ,
+  {
+    "name": "accounting-treatment-classifier",
+    "scope": "role/data-asset-accounting-engineer",
+    "path": "skills/role/data-asset-accounting-engineer/accounting-treatment-classifier/SKILL.md",
+    "emoji": "📚",
+    "risk": "high",
+    "description": "数据资产会计处理判定：无形资产 / 存货 / 长期待摊费用，参照财会〔2023〕11 号。当资产入表科目落位时使用。"
+  }
+  ,
+  {
+    "name": "amortization-scheduler",
+    "scope": "role/data-asset-accounting-engineer",
+    "path": "skills/role/data-asset-accounting-engineer/amortization-scheduler/SKILL.md",
+    "emoji": "📅",
+    "risk": "medium",
+    "description": "数据资产摊销计划表（直线法 / 加速法），输出年度摊销与账面价值曲线。当入表后每年结账时使用。"
+  }
+  ,
+  {
+    "name": "measurement-model-selector",
+    "scope": "role/data-asset-accounting-engineer",
+    "path": "skills/role/data-asset-accounting-engineer/measurement-model-selector/SKILL.md",
+    "emoji": "📐",
+    "risk": "high",
+    "description": "计量模式选择器：历史成本/重置成本/公允价值/可变现净值四种模式的适用性判定。当初始确认与后续计量前使用。"
+  }
+  ,
+  {
+    "name": "initial-recognition-worksheet",
+    "scope": "role/data-asset-accounting-engineer",
+    "path": "skills/role/data-asset-accounting-engineer/initial-recognition-worksheet/SKILL.md",
+    "emoji": "📓",
+    "risk": "medium",
+    "description": "初始确认工作底稿：可确认性判断 + 可靠计量 + 未来经济利益 + 成本归集明细。当新建数据资产入表时使用。"
+  }
+  ,
+  {
+    "name": "disclosure-note-drafter",
+    "scope": "role/data-asset-sponsor",
+    "path": "skills/role/data-asset-sponsor/disclosure-note-drafter/SKILL.md",
+    "emoji": "📝",
+    "risk": "medium",
+    "description": "财务附注中的数据资产披露段（会计政策、期初期末余额、变动原因）。当年报/半年报编制时使用。"
+  }
+  ,
+  {
+    "name": "audit-workpaper-builder",
+    "scope": "role/data-asset-sponsor",
+    "path": "skills/role/data-asset-sponsor/audit-workpaper-builder/SKILL.md",
+    "emoji": "📋",
+    "risk": "medium",
+    "description": "数据资产审计底稿模板（存在性/权属/计量/披露 四大认定）。当接受审计前使用。"
+  }
+  ,
+  {
+    "name": "sponsorship-opinion-letter",
+    "scope": "role/data-asset-sponsor",
+    "path": "skills/role/data-asset-sponsor/sponsorship-opinion-letter/SKILL.md",
+    "emoji": "✍️",
+    "risk": "high",
+    "description": "保荐意见书草稿：入表合规性 + 估值合理性 + 披露充分性 + 风险提示。面向监管/审计方。当入表报送前使用。"
+  }
+  ,
+  {
+    "name": "continuous-supervision-checklist",
+    "scope": "role/data-asset-sponsor",
+    "path": "skills/role/data-asset-sponsor/continuous-supervision-checklist/SKILL.md",
+    "emoji": "🔍",
+    "risk": "medium",
+    "description": "持续督导清单（季度/年度）：使用量/收益/减值迹象/纠错事项。当入表后定期回顾时使用。"
+  }
+  ,
+  {
+    "name": "credit-policy-designer",
+    "scope": "role/data-credit-manager",
+    "path": "skills/role/data-credit-manager/credit-policy-designer/SKILL.md",
+    "emoji": "⚖️",
+    "risk": "medium",
+    "description": "数据信用体系政策设计：信用对象/信用产品/信用内容/额度/定价/风控。当搭建信用体系、发布信用产品前使用。"
+  }
+  ,
+  {
+    "name": "credit-red-lines",
+    "scope": "role/data-credit-manager",
+    "path": "skills/role/data-credit-manager/credit-red-lines/SKILL.md",
+    "emoji": "🚩",
+    "risk": "high",
+    "description": "数据信用红线清单：造假嫌疑、来源违规、跨境未申报等一票否决项。当授信审批前使用。"
+  }
+  ,
+  {
+    "name": "credit-scorecard-builder",
+    "scope": "role/data-credit-appraiser",
+    "path": "skills/role/data-credit-appraiser/credit-scorecard-builder/SKILL.md",
+    "emoji": "💳",
+    "risk": "medium",
+    "description": "数据信用评分卡构建：以数据质量 + 主体信用 + 交易表现构建评分模型。当开展信用评价业务时使用。"
+  }
+  ,
+  {
+    "name": "credit-rating-committee",
+    "scope": "role/data-credit-appraiser",
+    "path": "skills/role/data-credit-appraiser/credit-rating-committee/SKILL.md",
+    "emoji": "🏛️",
+    "risk": "medium",
+    "description": "信用评级委员会流程与卡点：初评 → 复核 → 上会 → 完稿，含回避、异议处置、异议规则。当组织评级会时使用。"
+  }
+  ,
+  {
+    "name": "credit-report-drafter",
+    "scope": "role/data-credit-appraiser",
+    "path": "skills/role/data-credit-appraiser/credit-report-drafter/SKILL.md",
+    "emoji": "📄",
+    "risk": "medium",
+    "description": "信用评级报告草稿：主体画像 + 资产质量 + 评分结果 + 主要风险 + 展望。当对外输出评级结论时使用。"
+  }
+  ,
+  {
+    "name": "exchange-topology-designer",
+    "scope": "role/data-trading-planner",
+    "path": "skills/role/data-trading-planner/exchange-topology-designer/SKILL.md",
+    "emoji": "🏛️",
+    "risk": "low",
+    "description": "数据交易所拓扑设计（挂牌区 / 撮合区 / 交割区 / 清算区 / 监管接入）。当交易所立项、扩展新品类时使用。"
+  }
+  ,
+  {
+    "name": "listing-category-designer",
+    "scope": "role/data-trading-planner",
+    "path": "skills/role/data-trading-planner/listing-category-designer/SKILL.md",
+    "emoji": "🗂️",
+    "risk": "low",
+    "description": "挂牌品类设计：产品形态（数据集/API/报告/数据服务）× 领域（金融/医疗/交通……），附典型属性与上架需求。当设计挂牌目录时使用。"
+  }
+  ,
+  {
+    "name": "deal-mechanism-designer",
+    "scope": "role/data-trading-planner",
+    "path": "skills/role/data-trading-planner/deal-mechanism-designer/SKILL.md",
+    "emoji": "⚙️",
+    "risk": "medium",
+    "description": "交易机制设计（撮合 / 协议 / 招标 / 拍卖），含价格发现机制、担保交收、异常处置规则。当上线新交易品种时使用。"
+  }
+  ,
+  {
+    "name": "compliance-review-sheet",
+    "scope": "role/data-trading-compliance",
+    "path": "skills/role/data-trading-compliance/compliance-review-sheet/SKILL.md",
+    "emoji": "✅",
+    "risk": "high",
+    "description": "合规评审意见书：主体资质 / 数据来源 / 处理链路 / 出境 / PII / 授权 一票通过。当交易上架前使用。"
+  }
+  ,
+  {
+    "name": "breach-response-sop",
+    "scope": "role/data-trading-compliance",
+    "path": "skills/role/data-trading-compliance/breach-response-sop/SKILL.md",
+    "emoji": "🚨",
+    "risk": "high",
+    "description": "数据泄露应急 SOP（24h 通报 / 72h 报送 / 事后复盘 / 通知义务）。当发生疑似合规事件时使用。"
+  }
+  ,
+  {
+    "name": "growth-plan-quarterly",
+    "scope": "role/data-trading-operator",
+    "path": "skills/role/data-trading-operator/growth-plan-quarterly/SKILL.md",
+    "emoji": "📈",
+    "risk": "low",
+    "description": "季度平台运营计划（GMV / 供给 / 需求 / 生态活动 / 预算）。当季度启动前使用。"
+  }
+  ,
+  {
+    "name": "platform-metric-dashboard",
+    "scope": "role/data-trading-operator",
+    "path": "skills/role/data-trading-operator/platform-metric-dashboard/SKILL.md",
+    "emoji": "📊",
+    "risk": "low",
+    "description": "平台核心指标看板（GMV / 挂牌数 / 成交率 / 履约率 / NPS）。当日常运营监控、月度会议时使用。"
+  }
+  ,
+  {
+    "name": "campaign-retrospective",
+    "scope": "role/data-trading-operator",
+    "path": "skills/role/data-trading-operator/campaign-retrospective/SKILL.md",
+    "emoji": "🎬",
+    "risk": "low",
+    "description": "运营活动复盘模板（目标 / 执行 / 结果 / 归因 / 沉淀）。当活动结束时使用。"
+  }
+  ,
+  {
+    "name": "gmv-forecast-holt-winters",
+    "scope": "role/data-trading-analyst",
+    "path": "skills/role/data-trading-analyst/gmv-forecast-holt-winters/SKILL.md",
+    "emoji": "📈",
+    "risk": "medium",
+    "description": "GMV 时序预测（Holt-Winters / Prophet），含季节性与置信区间。当季度目标制定、供需匹配预警时使用。"
+  }
+  ,
+  {
+    "name": "category-hotspot-detector",
+    "scope": "role/data-trading-analyst",
+    "path": "skills/role/data-trading-analyst/category-hotspot-detector/SKILL.md",
+    "emoji": "🔥",
+    "risk": "low",
+    "description": "爆款品类识别：环比增速 + 首次上榜 + 交叉复购。当选品会、栏目运营时使用。"
+  }
+  ,
+  {
+    "name": "price-elasticity-model",
+    "scope": "role/data-trading-analyst",
+    "path": "skills/role/data-trading-analyst/price-elasticity-model/SKILL.md",
+    "emoji": "💹",
+    "risk": "medium",
+    "description": "价格弹性模型：估计需求对价格的敏感度，输出建议价区间。当调价决策前使用。"
+  }
+  ,
+  {
+    "name": "deal-intake-form",
+    "scope": "role/data-trading-broker",
+    "path": "skills/role/data-trading-broker/deal-intake-form/SKILL.md",
+    "emoji": "📝",
+    "risk": "low",
+    "description": "需求 intake 表单（业务问题 / 数据组合 / 预算 / 时限 / 授权范围）。当买方首次接触时使用。"
+  }
+  ,
+  {
+    "name": "matching-scorecard",
+    "scope": "role/data-trading-broker",
+    "path": "skills/role/data-trading-broker/matching-scorecard/SKILL.md",
+    "emoji": "🎯",
+    "risk": "low",
+    "description": "供需匹配打分卡（覆盖度 / 时效性 / 价格 / 合规 / 售后），输出 Top-N 推荐。当为买方推送候选卖方时使用。"
+  }
+  ,
+  {
+    "name": "deal-9steps-checklist",
+    "scope": "role/data-trading-broker",
+    "path": "skills/role/data-trading-broker/deal-9steps-checklist/SKILL.md",
+    "emoji": "✅",
+    "risk": "medium",
+    "description": "9 步经纪流程 Checklist（intake → acceptance），每步含质量卡点与产出物。当推进单笔交易全流程时使用。"
+  }
+  ,
+  {
+    "name": "three-rights-due-diligence",
+    "scope": "role/data-property-broker",
+    "path": "skills/role/data-property-broker/three-rights-due-diligence/SKILL.md",
+    "emoji": "🔎",
+    "risk": "high",
+    "description": "数据产权尽调：三权归属核查 + 权利瑕疵扫描 + 证据链完整性。当产权类交易立项时使用。"
+  }
+  ,
+  {
+    "name": "deal-structuring-3paths",
+    "scope": "role/data-property-broker",
+    "path": "skills/role/data-property-broker/deal-structuring-3paths/SKILL.md",
+    "emoji": "🏗️",
+    "risk": "high",
+    "description": "三条路径结构方案：全部转让 / 独家许可 / 作价入股，含税务与治理影响对比。当产权交易方案设计时使用。"
+  }
+  ,
+  {
+    "name": "contract-key-clauses",
+    "scope": "role/data-property-broker",
+    "path": "skills/role/data-property-broker/contract-key-clauses/SKILL.md",
+    "emoji": "📜",
+    "risk": "high",
+    "description": "产权交易合同关键条款清单：标的界定 / 权利范围 / 对价 / 陈述保证 / 违约救济 / 争议解决。当合同起草与审核时使用。"
+  }
+]

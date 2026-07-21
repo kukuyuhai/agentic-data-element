@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/data-element-agents/data-element-skills/blob/main/docs/schema/roster.schema.json",
-  "title": "data-element-agents · Roster Schema",
+  "$id": "https://github.com/kukuyuhai/agentic-data-element/blob/main/docs/schema/roster.schema.json",
+  "title": "agentic-data-element · Roster Schema",
   "description": "机器可读的岗位数字员工花名册元数据规范，对齐 T/MIITEC 025-2024《数据要素产业人才岗位能力要求》。",
   "type": "object",
   "required": [

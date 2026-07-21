@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # ==============================================================================
-# data-element-agents · workflow.sh
+# agentic-data-element · workflow.sh
 #
 # 按预置工作流串联多个岗位数字员工，输出可打印的"团队作业单"。
 # 工作流定义在 workflows/*.yaml，索引在 roster.json。

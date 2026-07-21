@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # ==============================================================================
-# data-element-agents · validate.sh
+# agentic-data-element · validate.sh
 #
 # 校验所有 agent 文件的完整性：
 #   1) YAML front-matter 必填字段齐全
@@ -70,7 +70,7 @@ done < <(list_agent_files)
 
 log "校验 roster.json 引用"
 if command -v python3 >/dev/null 2>&1; then
-  python3 - <<PY
+  ROOT="$ROOT" python3 - <<PY
 import json, os, sys
 root = os.environ.get("ROOT", ".")
 data = json.load(open(os.path.join(root, "roster.json"), encoding="utf-8"))
@@ -85,6 +85,37 @@ if missing:
         print("MISSING:", m)
     sys.exit(1)
 PY
+fi
+
+log "校验 skills/ 与 mount-map.json 一致性"
+if [[ -d "$ROOT/skills" && -f "$ROOT/skills/mount-map.json" && -f "$ROOT/skills/manifest.json" ]]; then
+  if command -v python3 >/dev/null 2>&1; then
+    ROOT="$ROOT" python3 - <<'PY' || errors=$((errors+1))
+import json, os, re, sys, pathlib
+root = pathlib.Path(os.environ.get("ROOT", "."))
+manifest = json.loads((root/"skills/manifest.json").read_text())
+files = list(root.glob("skills/**/SKILL.md"))
+if len(manifest) != len(files):
+    print(f"[skills] manifest 条目 ({len(manifest)}) ≠ SKILL.md 数 ({len(files)})")
+    sys.exit(1)
+for f in files:
+    txt = f.read_text(encoding="utf-8")
+    m = re.search(r"^name:\s*(\S+)\s*$", txt, re.M)
+    if not m or m.group(1) != f.parent.name:
+        print(f"[skills] {f}: front-matter name 与目录名不匹配")
+        sys.exit(1)
+mmap = json.loads((root/"skills/mount-map.json").read_text())
+names = {m["scope"]+"/"+m["name"] for m in manifest}
+for aid, sks in mmap.items():
+    for s in sks:
+        if s not in names:
+            print(f"[skills] {aid} 引用不存在的 skill: {s}")
+            sys.exit(1)
+print(f"[skills] OK: {len(manifest)} skills, {len(mmap)} agents mount-map 均一致")
+PY
+  fi
+else
+  dim "未发现 skills/mount-map.json，跳过 skills 校验（可先跑 scripts/gen-skills.sh）"
 fi
 
 echo

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # ==============================================================================
-# data-element-agents - lib/common.sh
+# agentic-data-element - lib/common.sh
 # 公共函数库：日志、路径、YAML front-matter 解析
 # ==============================================================================
 
@@ -18,7 +18,7 @@ else
   C_RESET='' C_RED='' C_GRN='' C_YLW='' C_BLU='' C_DIM=''
 fi
 
-log()   { printf "%b[data-element-agents]%b %s\n" "$C_BLU" "$C_RESET" "$*"; }
+log()   { printf "%b[agentic-data-element]%b %s\n" "$C_BLU" "$C_RESET" "$*"; }
 ok()    { printf "%b✓%b %s\n" "$C_GRN" "$C_RESET" "$*"; }
 warn()  { printf "%b⚠%b %s\n" "$C_YLW" "$C_RESET" "$*" >&2; }
 err()   { printf "%b✗%b %s\n" "$C_RED" "$C_RESET" "$*" >&2; }

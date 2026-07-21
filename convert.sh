@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # ==============================================================================
-# data-element-agents · convert.sh
+# agentic-data-element · convert.sh
 #
 # 将标准 agent markdown 文件转换为不同 AI 工具专属格式（不做安装动作）。
 # 主要用途：
@@ -136,7 +136,7 @@ gen_openclaw() {
   {
     cat <<'HDR'
 // ============================================================================
-// data-element-agents · OpenClaw config snippet（自动生成）
+// agentic-data-element · OpenClaw config snippet（自动生成）
 // 标准：T/MIITEC 025-2024《数据要素产业人才岗位能力要求》
 //
 // 用法（二选一）：

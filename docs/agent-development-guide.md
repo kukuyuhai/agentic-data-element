@@ -5,7 +5,7 @@
 ## 1. 目录结构
 
 ```
-data-element-skills/
+agentic-data-element/
 ├── agents/                          # 数字员工角色定义（source of truth）
 │   ├── data-asset-management/       # 数据资产管理方向（DAM-01 ~ DAM-11）
 │   └── data-asset-trading/          # 数据资产交易方向（DAT-01 ~ DAT-06）
