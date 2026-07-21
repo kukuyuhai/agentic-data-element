@@ -646,4 +646,22 @@
     "risk": "high",
     "description": "产权交易合同关键条款清单：标的界定 / 权利范围 / 对价 / 陈述保证 / 违约救济 / 争议解决。当合同起草与审核时使用。"
   }
+  ,
+  {
+    "name": "data-asset-capitalization",
+    "scope": "scene",
+    "path": "skills/scene/data-asset-capitalization/SKILL.md",
+    "emoji": "📊",
+    "risk": "medium",
+    "description": "数据资产入表全流程助手。覆盖识别盘点、确权合规、成本资本化、会计计量、披露、价值评估等环节。当用户询问数据资产入表、数据资源会计处理、数据资产化流程时使用。"
+  }
+  ,
+  {
+    "name": "data-trading",
+    "scope": "scene",
+    "path": "skills/scene/data-trading/SKILL.md",
+    "emoji": "💱",
+    "risk": "medium",
+    "description": "数据交易全流程助手。覆盖可行性诊断、产品化、挂牌、定价撮合、合同签约、交付结算等环节。当用户询问数据交易、数据流通、数据产品挂牌时使用。"
+  }
 ]
