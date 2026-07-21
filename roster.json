@@ -1,0 +1,240 @@
+{
+  "$schema": "./docs/schema/roster.schema.json",
+  "standard": "T/MIITEC 025-2024",
+  "standard_title": "数据要素产业人才岗位能力要求",
+  "issued_by": "工业和信息化部人才交流中心",
+  "issued_at": "2024-12-18",
+  "version": "0.1.0",
+  "capability_dimensions": [
+    { "id": "knowledge", "name": "专业知识", "sub": ["基础知识", "专业知识"] },
+    { "id": "skill",     "name": "技术技能", "sub": ["基本技能", "专业技能"] },
+    { "id": "practice",  "name": "工程实践", "sub": ["项目经验"] }
+  ],
+  "levels": [
+    { "id": "junior",   "cn": "初级", "range": "1-3", "weights": { "knowledge": 0.70, "skill": 0.25, "practice": 0.05 } },
+    { "id": "mid",      "cn": "中级", "range": "4-6", "weights": { "knowledge": 0.50, "skill": 0.25, "practice": 0.25 } },
+    { "id": "senior",   "cn": "高级", "range": "7-9", "weights": { "knowledge": 0.20, "skill": 0.30, "practice": 0.50 } }
+  ],
+  "directions": [
+    {
+      "id": "data-asset-management",
+      "name": "数据资产管理",
+      "agents": [
+        {
+          "id": "DAM-01",
+          "name": "首席数据官",
+          "en_name": "Chief Data Officer",
+          "abbr": "CDO",
+          "file": "agents/data-asset-management/01-chief-data-officer.md",
+          "standard_section": "5.1.1",
+          "emoji": "🧭",
+          "color": "navy",
+          "keywords": ["数据战略", "数据治理", "组织领导", "跨部门协同"],
+          "responsibilities": "负责制定并执行数据战略，推动数据治理，监督数据质量、安全和合规性，领导数据团队"
+        },
+        {
+          "id": "DAM-02",
+          "name": "数据资产规划师",
+          "en_name": "Data Asset Planner",
+          "file": "agents/data-asset-management/02-data-asset-planner.md",
+          "standard_section": "5.1.2",
+          "emoji": "🗺️",
+          "color": "teal",
+          "keywords": ["生命周期规划", "市场调研", "价格策略", "路线图"],
+          "responsibilities": "负责制定数据资产生命周期规划方案，指导制定数据资产管理策略，推动数据资产入表、交易"
+        },
+        {
+          "id": "DAM-03",
+          "name": "数据资产确权师",
+          "en_name": "Data Asset Registration Specialist",
+          "file": "agents/data-asset-management/03-data-asset-registration-specialist.md",
+          "standard_section": "5.1.3",
+          "emoji": "🪪",
+          "color": "purple",
+          "keywords": ["权属界定", "知识产权", "无形资产评估", "元数据管理"],
+          "responsibilities": "负责确定数据资产的权利属性、权利主体和内容"
+        },
+        {
+          "id": "DAM-04",
+          "name": "数据资产安全合规师",
+          "en_name": "Data Asset Security & Compliance Officer",
+          "file": "agents/data-asset-management/04-data-asset-security-compliance.md",
+          "standard_section": "5.1.4",
+          "emoji": "🛡️",
+          "color": "red",
+          "keywords": ["数据分类分级", "安全审计", "应急响应", "合规治理"],
+          "responsibilities": "负责确保数据资产安全以及符合相关的法律法规和标准"
+        },
+        {
+          "id": "DAM-05",
+          "name": "数据资产管理运营师",
+          "en_name": "Data Asset Operations Manager",
+          "file": "agents/data-asset-management/05-data-asset-operations.md",
+          "standard_section": "5.1.5",
+          "emoji": "🔧",
+          "color": "orange",
+          "keywords": ["日常运营", "数据服务", "业务对接", "价值挖掘"],
+          "responsibilities": "负责数据资产管理和运营，监控数据资产运营情况，优化管理和运营策略"
+        },
+        {
+          "id": "DAM-06",
+          "name": "数据资产运营规划师",
+          "en_name": "Data Asset Operations Planner",
+          "file": "agents/data-asset-management/06-data-asset-operations-planner.md",
+          "standard_section": "5.1.6",
+          "emoji": "📈",
+          "color": "cyan",
+          "keywords": ["战略规划", "行业分析", "投资评估", "资源配置"],
+          "responsibilities": "负责规划数据资产策略，评估项目价值，分析行业趋势和市场需求，提供战略建议，确保数据资产的高效利用和资源的最优配置"
+        },
+        {
+          "id": "DAM-07",
+          "name": "数据资产评估计价师",
+          "en_name": "Data Asset Appraiser",
+          "file": "agents/data-asset-management/07-data-asset-appraiser.md",
+          "standard_section": "5.1.7",
+          "emoji": "⚖️",
+          "color": "gold",
+          "keywords": ["价值评估", "折旧模型", "定价方法", "评估报告"],
+          "responsibilities": "负责数据资产的计价评估和分析，制定数据资产计价评估优化方案"
+        },
+        {
+          "id": "DAM-08",
+          "name": "数据资产入表工程师",
+          "en_name": "Data Asset Accounting Engineer",
+          "file": "agents/data-asset-management/08-data-asset-accounting-engineer.md",
+          "standard_section": "5.1.8",
+          "emoji": "🧾",
+          "color": "green",
+          "keywords": ["会计确认", "计量披露", "ERP", "无形资产"],
+          "responsibilities": "负责数据资产的确认、计量、记录、报告及披露，将数据资产确认为企业资产负债表中的一项资产"
+        },
+        {
+          "id": "DAM-09",
+          "name": "数据资产入表保荐师",
+          "en_name": "Data Asset Sponsor",
+          "file": "agents/data-asset-management/09-data-asset-sponsor.md",
+          "standard_section": "5.1.9",
+          "emoji": "📜",
+          "color": "indigo",
+          "keywords": ["合规审核", "入表保荐", "价值最大化", "审计协同"],
+          "responsibilities": "负责数据资产入表评估、确权、合规性审核，推动数据资产会计入表"
+        },
+        {
+          "id": "DAM-10",
+          "name": "数据信用管理师",
+          "en_name": "Data Credit Manager",
+          "file": "agents/data-asset-management/10-data-credit-manager.md",
+          "standard_section": "5.1.10",
+          "emoji": "🏦",
+          "color": "blue",
+          "keywords": ["信用管理", "风险监测", "征信登记", "评分模型"],
+          "responsibilities": "负责采集分析数据，建立信用管理体系，监督信用状况，促进企业和社会的信用水平提升"
+        },
+        {
+          "id": "DAM-11",
+          "name": "数据信用评价师",
+          "en_name": "Data Credit Appraiser",
+          "file": "agents/data-asset-management/11-data-credit-appraiser.md",
+          "standard_section": "5.1.11",
+          "emoji": "📊",
+          "color": "amber",
+          "keywords": ["信用评级", "评估模型", "行业标准", "报告输出"],
+          "responsibilities": "负责收集、分析数据，评估信用状况，为企业和机构提供准确的信用评价报告及决策依据"
+        }
+      ]
+    },
+    {
+      "id": "data-asset-trading",
+      "name": "数据资产交易",
+      "agents": [
+        {
+          "id": "DAT-01",
+          "name": "数据交易规划师",
+          "en_name": "Data Trading Product Planner",
+          "file": "agents/data-asset-trading/01-data-trading-planner.md",
+          "standard_section": "5.2.1",
+          "emoji": "🧩",
+          "color": "violet",
+          "keywords": ["产品规划", "定价模型", "平台设计", "策略优化"],
+          "responsibilities": "负责数据产品的规划、设计、运营和优化，制定和优化数据交易产品策略"
+        },
+        {
+          "id": "DAT-02",
+          "name": "数据交易安全合规师",
+          "en_name": "Data Trading Compliance Officer",
+          "file": "agents/data-asset-trading/02-data-trading-compliance.md",
+          "standard_section": "5.2.2",
+          "emoji": "🔐",
+          "color": "crimson",
+          "keywords": ["交易审核", "跨境合规", "隐私保护", "应急响应"],
+          "responsibilities": "负责数据交易安全和合规审核，制定和完善数据交易合规制度"
+        },
+        {
+          "id": "DAT-03",
+          "name": "数据交易运营师",
+          "en_name": "Data Trading Platform Operator",
+          "file": "agents/data-asset-trading/03-data-trading-operator.md",
+          "standard_section": "5.2.3",
+          "emoji": "🛠️",
+          "color": "orange",
+          "keywords": ["平台运营", "用户体验", "KPI 优化", "监控告警"],
+          "responsibilities": "负责数据交易平台的日常运营，分析交易数据，优化数据平台功能和服务"
+        },
+        {
+          "id": "DAT-04",
+          "name": "数据交易分析师",
+          "en_name": "Data Trading Analyst",
+          "file": "agents/data-asset-trading/04-data-trading-analyst.md",
+          "standard_section": "5.2.4",
+          "emoji": "🔎",
+          "color": "sky",
+          "keywords": ["市场分析", "数据挖掘", "决策支持", "预测模型"],
+          "responsibilities": "负责数据交易的挖掘和分析，监测数据交易市场动态，提供数据交易决策支持"
+        },
+        {
+          "id": "DAT-05",
+          "name": "数据交易经纪师",
+          "en_name": "Data Trading Broker",
+          "file": "agents/data-asset-trading/05-data-trading-broker.md",
+          "standard_section": "5.2.5",
+          "emoji": "📈",
+          "color": "emerald",
+          "keywords": ["交易撮合", "趋势预测", "量化策略", "客户咨询"],
+          "responsibilities": "负责数据要素市场规律分析，预测数据交易趋势，执行交易决策"
+        },
+        {
+          "id": "DAT-06",
+          "name": "数据产权交易师",
+          "en_name": "Data Property Rights Broker",
+          "file": "agents/data-asset-trading/06-data-property-broker.md",
+          "standard_section": "5.2.6",
+          "emoji": "⚖️",
+          "color": "slate",
+          "keywords": ["产权评估", "合同法务", "确权流转", "纠纷处置"],
+          "responsibilities": "负责评估数据产权价值，促成数据产权交易，规范交易流程，保障交易双方合法权益"
+        }
+      ]
+    }
+  ],
+  "workflows": [
+    {
+      "id": "data-asset-onboarding",
+      "name": "数据资产入表标准作业流",
+      "file": "workflows/data-asset-onboarding.yaml",
+      "agents": ["DAM-03", "DAM-07", "DAM-08", "DAM-09"]
+    },
+    {
+      "id": "data-trading-listing",
+      "name": "数据产品挂牌交易流",
+      "file": "workflows/data-trading-listing.yaml",
+      "agents": ["DAT-01", "DAT-02", "DAM-07", "DAT-03", "DAT-06"]
+    },
+    {
+      "id": "data-credit-assessment",
+      "name": "企业数据信用评估流",
+      "file": "workflows/data-credit-assessment.yaml",
+      "agents": ["DAM-10", "DAM-11", "DAM-04"]
+    }
+  ]
+}

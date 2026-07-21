@@ -1,0 +1,54 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  validate:
+    name: Validate agents & roster
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python (for roster json check)
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Make scripts executable
+        run: |
+          chmod +x install.sh convert.sh workflow.sh scripts/validate.sh
+
+      - name: Validate agent files
+        run: ./scripts/validate.sh
+
+      - name: Run convert (dry-run generation)
+        run: |
+          ./convert.sh index
+          ./convert.sh roster
+          test -s dist/agents.index.json
+          test -s dist/roster.md
+
+      - name: Check roster.json is valid JSON
+        run: python -c "import json; json.load(open('roster.json', encoding='utf-8'))"
+
+      - name: Check workflows are valid YAML
+        run: |
+          python - <<'PY'
+          import yaml, glob, sys
+          bad = []
+          for f in sorted(glob.glob("workflows/*.yaml")):
+              try:
+                  yaml.safe_load(open(f, encoding="utf-8"))
+              except Exception as e:
+                  bad.append((f, str(e)))
+          if bad:
+              for f, e in bad:
+                  print(f"FAIL {f}: {e}")
+              sys.exit(1)
+          print(f"OK: {len(glob.glob('workflows/*.yaml'))} workflow(s) valid")
+          PY

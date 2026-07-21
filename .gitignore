@@ -1,0 +1,46 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# IDE / Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.qoder/
+.cursor/
+.claude/
+
+# Build & 生成物
+build/
+dist/
+out/
+tmp/
+.cache/
+.generated/
+
+# 转换脚本生成的目标格式（可按需保留）
+.claude/agents/data-element/
+.cursor/rules/data-element/
+CONVENTIONS.data-element.md
+.github/copilot/data-element/
+
+# Python / Node（若后续增加工具链）
+__pycache__/
+*.py[cod]
+*.egg-info/
+node_modules/
+*.log
+npm-debug.log*
+
+# 环境变量
+.env
+.env.local
+.env.*.local
+
+# 日志
+logs/
+*.log
