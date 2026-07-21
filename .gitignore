@@ -16,6 +16,7 @@
 .openclaw/
 .aider/
 .aider.conf.yml
+.workbuddy/
 
 # Build & 生成物
 build/
