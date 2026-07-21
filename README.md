@@ -1,7 +1,6 @@
 # 🏛️ 数据要素产业人才数字员工系统 (Agentic Data Element)
 
 > 基于工信部人才交流中心《数据要素产业人才岗位能力要求》（**T/MIITEC 025-2024**）团体标准，
-> 参考 [msitarzewski/agency-agents](https://github.com/msitarzewski/agency-agents) 的多智能体分发架构，
 > 将 17 个数据要素相关岗位转化为可自动化调度的**数字员工（Digital Employees）**角色。
 
 [![Standard](https://img.shields.io/badge/Standard-T%2FMIITEC%20025--2024-blue)](docs/standard-overview.md)
@@ -153,19 +152,6 @@ agentic-data-element/
 ```
 
 评价等级共 3 级 9 等（初级 1-3、中级 4-6、高级 7-9），详见 [`docs/evaluation.md`](docs/evaluation.md)。
-
----
-
-## 🤝 与 agency-agents 的对比
-
-| 维度 | agency-agents | agentic-data-element |
-|---|---|---|
-| 定位 | 通用软件工程 AI 角色库 | 数据要素产业标准化数字员工 |
-| 角色数量 | 112+ 通用角色 | 17 个标准岗位（严格对应国标） |
-| 依据标准 | 社区经验最佳实践 | **T/MIITEC 025-2024 团体标准** |
-| 语言 | 英文为主 | 中文原生，术语与国标一致 |
-| 目标用户 | 开发者/团队 | 数据要素企业、交易所、评估机构、监管方 |
-| 可追溯性 | 无 | 每条能力项 → 标准章节号可追溯 |
 
 ---
 
